@@ -4,19 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "mvn clean"
+                sh "/usr/local/opt/maven/bin/mvn clean"
             }
         }
 
         stage('test') {
             steps {
-                bat "mvn compile"
+                sh "/usr/local/opt/maven/bin/mvn compile"
             }
         }
 
         stage('test2') {
             steps {
-                bat 'mvn test'
+                sh '''
+                    /usr/local/opt/maven/bin/mvn test
+                '''
             }
         }
     }
